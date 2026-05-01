@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<h1>Expense Tracker</h1>
+
+<form action="/add" method="POST">
+    <input type="number" name="amount" placeholder="Amount" required>
+    <input type="text" name="category" placeholder="Category" required>
+    <button type="submit">Add</button>
+</form>
+
+<h2>Expenses</h2>
+<ul>
+    <% expenses.forEach(e => { %>
+        <li>
+            ₹<%= e[1] %> - <%= e[2] %>
+            <a href="/delete/<%= e[0] %>">Delete</a>
+        </li>
+    <% }) %>
+</ul>
+
+<h2>Monthly Summary</h2>
+<ul>
+    <% summary.forEach(s => { %>
+        <li><%= s[0] %>: ₹<%= s[1] %></li>
+    <% }) %>
+</ul>
+
+</body>
+</html>
