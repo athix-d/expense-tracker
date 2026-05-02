@@ -8,7 +8,7 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const API = process.env.API_URL || "http://localhost:8000";
+const API = process.env.API_URL || "http://54.164.114.50:8000";
 
 app.get("/", async (req, res) => {
     try {
