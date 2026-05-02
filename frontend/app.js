@@ -7,7 +7,7 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const API = "http://backend:8000";
+const API = "http://54.164.114.50:8000";
 
 app.get("/", async (req, res) => {
     const expenses = await axios.get(`${API}/expenses`);
