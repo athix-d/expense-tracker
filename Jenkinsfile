@@ -11,7 +11,7 @@ pipeline {
         stage('Build Docker Image for Frontend') {
             steps {
                 echo "changing directory to expense-tracker/frontend"
-                dir('expense-tracker/frontend') {
+                dir('frontend') {
                     docker_build("expense-tracker-frontend", "${env.BUILD_NUMBER}")
                 }
             }
@@ -19,7 +19,7 @@ pipeline {
         stage('Deploy Frontend') {
             steps {
                 echo "Deploying frontend using docker compose"
-                dir('expense-tracker/frontend') {
+                dir('frontend') {
                     sh "docker compose up -d"
                 }
             }
@@ -36,9 +36,12 @@ pipeline {
                 withCredentials([string(credentialsId: 'backend_ip_address', variable: 'BACKEND_IP'), string(credentialsId: 'instance_username', variable: 'SSH_USER')]) {
                     sh """
                     ssh ${SSH_USER}@${BACKEND_IP} '
-                    cd expense-tracker || git clone https://github.com/athix-d/expense-tracker.git &&
-                    cd expense-tracker/backend &&
-                    git pull
+                    if [ ! -d backend ]; then
+                        git clone https://github.com/athix-d/expense-tracker.git
+                    fi &&
+                    cd backend &&
+                    mkdir -p volume/store_data &&
+                    git pull &&
                     docker build -t expense-tracker-backend:${BUILD_NUMBER} . &&
                     docker compose up -d
                     '
