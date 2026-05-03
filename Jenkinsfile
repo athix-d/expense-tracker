@@ -27,7 +27,7 @@ pipeline {
                     echo "===== DOCKER COMPOSE CONFIG ====="
                     docker compose config
                     echo "===== DOCKER COMPOSE DOWN ====="
-                    docekr compose down
+                    docker compose down
                     echo "===== RUNNING COMPOSE ====="
                     docker compose up -d
                     echo "===== CONTAINERS ====="
