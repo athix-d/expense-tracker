@@ -6,4 +6,4 @@ services:
       ports:
         - "3000:3000"
       environment:
-        - API_URL=http://54.242.0.50:8000
+        - API_URL=http://54.82.176.110:8000
