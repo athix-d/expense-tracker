@@ -22,8 +22,8 @@ pipeline {
                 dir('frontend') {
                     sh """
                     echo "===== DEBUG START ====="
-                    pwd
-                    ls -la
+                    echo "pwd"
+                    echo "ls -la"
                     echo "===== DOCKER COMPOSE CONFIG ====="
                     docker compose config
                     echo "===== DOCKER COMPOSE DOWN ====="
