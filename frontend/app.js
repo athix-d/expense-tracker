@@ -8,10 +8,10 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// 🔥 Use env OR fallback to your backend IP
-const API = process.env.API_URL || "http://54.164.114.50:8000";
+// Use env for accessing backend IP
+const API = process.env.API_URL;
 
-// 🔥 Log once at startup (VERY IMPORTANT for debugging)
+// Log once at startup (VERY IMPORTANT for debugging)
 console.log("Using Backend API:", API);
 
 app.get("/", async (req, res) => {
@@ -59,7 +59,7 @@ app.get("/delete/:id", async (req, res) => {
     res.redirect("/");
 });
 
-// 🔥 MUST bind to 0.0.0.0 for Docker
+// MUST bind to 0.0.0.0 for Docker
 app.listen(3000, "0.0.0.0", () => {
     console.log("Frontend running on 3000");
 });
