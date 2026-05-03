@@ -24,6 +24,7 @@ pipeline {
                     echo "===== DEBUG START ====="
                     echo "pwd"
                     echo "ls -la"
+                    echo "scrit scm test"
                     echo "===== DOCKER COMPOSE CONFIG ====="
                     docker compose config
                     echo "===== DOCKER COMPOSE DOWN ====="
