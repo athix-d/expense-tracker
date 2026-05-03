@@ -10,7 +10,7 @@ pipeline {
         }
         stage('Build Docker Image for Frontend') {
             steps {
-                echo "changing directory to expense-tracker/frontend"
+                echo "changing directory to /frontend"
                 dir('frontend') {
                     docker_build("expense-tracker-frontend", "${env.BUILD_NUMBER}")
                 }
