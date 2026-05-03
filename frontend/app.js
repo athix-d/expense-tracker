@@ -18,7 +18,7 @@ app.get("/", async (req, res) => {
     console.log("Incoming request: /");
 
     let expenses = [];
-    let summary = {};
+    let summary = [];
 
     try {
         const expRes = await axios.get(`${API}/expenses`, { timeout: 5000 });
